@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Pontuação C1 Advanced</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="description" content="A comprehensive calculator for Cambridge C1 Advanced exam scores, covering Reading, Use of English, Listening, Writing, Speaking, and the Overall Score.">
+<link rel="stylesheet" href="/index.css">
+</head>
+<body>
+    <main class="container">
+        <!-- Card do Reading -->
+        <div class="calculator-card">
+            <h1>C1 Reading</h1>
+            <p class="subtitle">Insira os acertos de cada parte.</p>
+
+            <form id="reading-score-form" novalidate>
+                <div class="input-grid">
+                    <div class="input-group">
+                        <label for="part1">Part 1 (1 pt)</label>
+                        <input type="number" id="part1" min="0" max="8" placeholder="0" aria-describedby="part1-error">
+                        <p class="error-message" id="part1-error" aria-live="polite"></p>
+                    </div>
+                    <div class="input-group">
+                        <label for="part5">Part 5 (2 pts)</label>
+                        <input type="number" id="part5" min="0" max="6" placeholder="0" aria-describedby="part5-error">
+                        <p class="error-message" id="part5-error" aria-live="polite"></p>
+                    </div>
+                    <div class="input-group">
+                        <label for="part6">Part 6 (2 pts)</label>
+                        <input type="number" id="part6" min="0" max="4" placeholder="0" aria-describedby="part6-error">
+                        <p class="error-message" id="part6-error" aria-live="polite"></p>
+                    </div>
+                    <div class="input-group">
+                        <label for="part7">Part 7 (2 pts)</label>
+                        <input type="number" id="part7" min="0" max="6" placeholder="0" aria-describedby="part7-error">
+                        <p class="error-message" id="part7-error" aria-live="polite"></p>
+                    </div>
+                    <div class="input-group">
+                        <label for="part8">Part 8 (1 pt)</label>
+                        <input type="number" id="part8" min="0" max="10" placeholder="0" aria-describedby="part8-error">
+                        <p class="error-message" id="part8-error" aria-live="polite"></p>
+                    </div>
+                </div>
+            </form>
+
+            <div class="results-container">
+                <h2>Resultados</h2>
+                <div class="result-item">
+                    <span>Pontuação Bruta:</span>
+                    <strong id="raw-score-value-reading">0 / 50</strong>
+                </div>
+                <div class="result-item">
+                    <span>Pontuação na Escala:</span>
+                    <strong id="scaled-score-value-reading">142</strong>
+                </div>
+                <div class="result-item">
+                    <span>Nível CEFR:</span>
+                    <strong id="cefr-level-value-reading" class="cefr-badge cefr-below-b2">Abaixo de B2</strong>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card do Use of English -->
+        <div class="calculator-card">
+            <h1>C1 Use of English</h1>
+            <p class="subtitle">Insira os acertos de cada parte.</p>
+
+            <form id="uoe-score-form" novalidate>
+                <div class="input-grid">
+                    <div class="input-group">
+                        <label for="part2">Part 2 (1 pt)</label>
+                        <input type="number" id="part2" min="0" max="8" placeholder="0" aria-describedby="part2-error">
+                        <p class="error-message" id="part2-error" aria-live="polite"></p>
+                    </div>
+                    <div class="input-group">
+                        <label for="part3">Part 3 (1 pt)</label>
+                        <input type="number" id="part3" min="0" max="8" placeholder="0" aria-describedby="part3-error">
+                        <p class="error-message" id="part3-error" aria-live="polite"></p>
+                    </div>
+                    <div class="input-group">
+                        <label for="part4">Part 4 (2 pts)</label>
+                        <input type="number" id="part4" min="0" max="6" placeholder="0" aria-describedby="part4-error">
+                        <p class="error-message" id="part4-error" aria-live="polite"></p>
+                    </div>
+                </div>
+            </form>
+
+            <div class="results-container">
+                <h2>Resultados</h2>
+                <div class="result-item">
+                    <span>Pontuação Bruta:</span>
+                    <strong id="raw-score-value-uoe">0 / 28</strong>
+                </div>
+                <div class="result-item">
+                    <span>Pontuação na Escala:</span>
+                    <strong id="scaled-score-value-uoe">142</strong>
+                </div>
+                <div class="result-item">
+                    <span>Nível CEFR:</span>
+                    <strong id="cefr-level-value-uoe" class="cefr-badge cefr-below-b2">Abaixo de B2</strong>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Card do Listening -->
+        <div class="calculator-card">
+            <h1>C1 Listening</h1>
+            <p class="subtitle">Insira o total de acertos.</p>
+            
+            <form id="listening-score-form" novalidate>
+                <div class="input-grid" style="grid-template-columns: 1fr;">
+                    <div class="input-group">
+                        <label for="listening-score">Acertos (0-30)</label>
+                        <input type="number" id="listening-score" min="0" max="30" placeholder="0" aria-describedby="listening-error">
+                        <p class="error-message" id="listening-error" aria-live="polite"></p>
+                    </div>
+                </div>
+            </form>
+            
+            <div class="results-container">
+                <h2>Resultados</h2>
+                <div class="result-item">
+                    <span>Pontuação Bruta:</span>
+                    <strong id="raw-score-value-listening">0 / 30</strong>
+                </div>
+                <div class="result-item">
+                    <span>Pontuação na Escala:</span>
+                    <strong id="scaled-score-value-listening">120</strong>
+                </div>
+                <div class="result-item">
+                    <span>Nível CEFR:</span>
+                    <strong id="cefr-level-value-listening" class="cefr-badge cefr-below-b2">Abaixo de B2</strong>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Card do Writing -->
+        <div class="calculator-card">
+            <h1>C1 Writing</h1>
+            <p class="subtitle">Insira a nota bruta.</p>
+            
+            <form id="writing-score-form" novalidate>
+                <div class="input-grid" style="grid-template-columns: 1fr;">
+                    <div class="input-group">
+                        <label for="writing-score">Nota (0-40)</label>
+                        <input type="number" id="writing-score" min="0" max="40" placeholder="0" aria-describedby="writing-error">
+                        <p class="error-message" id="writing-error" aria-live="polite"></p>
+                    </div>
+                </div>
+            </form>
+            
+            <div class="results-container">
+                <h2>Resultados</h2>
+                <div class="result-item">
+                    <span>Pontuação Bruta:</span>
+                    <strong id="raw-score-value-writing">0 / 40</strong>
+                </div>
+                <div class="result-item">
+                    <span>Pontuação na Escala:</span>
+                    <strong id="scaled-score-value-writing">122</strong>
+                </div>
+                <div class="result-item">
+                    <span>Nível CEFR:</span>
+                    <strong id="cefr-level-value-writing" class="cefr-badge cefr-below-b2">Abaixo de B2</strong>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card do Speaking -->
+        <div class="calculator-card">
+            <h1>C1 Speaking</h1>
+            <p class="subtitle">Selecione o modo de entrada.</p>
+
+            <form id="speaking-score-form" novalidate>
+                <div class="mode-switcher">
+                    <label>
+                        <input type="radio" name="speaking-mode" value="components" checked>
+                        <span>Componentes</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="speaking-mode" value="total">
+                        <span>Total Direto</span>
+                    </label>
+                </div>
+
+                <div id="speaking-components-section">
+                    <div class="input-grid">
+                        <div class="input-group">
+                            <label for="gr">Grammar (GR)</label>
+                            <input type="number" id="gr" min="0" max="5" step="0.5" placeholder="0.0" aria-describedby="gr-error">
+                            <p class="error-message" id="gr-error" aria-live="polite"></p>
+                        </div>
+                        <div class="input-group">
+                            <label for="lr">Lexis (LR)</label>
+                            <input type="number" id="lr" min="0" max="5" step="0.5" placeholder="0.0" aria-describedby="lr-error">
+                            <p class="error-message" id="lr-error" aria-live="polite"></p>
+                        </div>
+                        <div class="input-group">
+                            <label for="dm">Discourse (DM)</label>
+                            <input type="number" id="dm" min="0" max="5" step="0.5" placeholder="0.0" aria-describedby="dm-error">
+                            <p class="error-message" id="dm-error" aria-live="polite"></p>
+                        </div>
+                        <div class="input-group">
+                            <label for="pr">Pronunciation (PR)</label>
+                            <input type="number" id="pr" min="0" max="5" step="0.5" placeholder="0.0" aria-describedby="pr-error">
+                            <p class="error-message" id="pr-error" aria-live="polite"></p>
+                        </div>
+                        <div class="input-group">
+                            <label for="ic">Interaction (IC)</label>
+                            <input type="number" id="ic" min="0" max="5" step="0.5" placeholder="0.0" aria-describedby="ic-error">
+                            <p class="error-message" id="ic-error" aria-live="polite"></p>
+                        </div>
+                        <div class="input-group">
+                            <label for="ga">Global (GA)</label>
+                            <input type="number" id="ga" min="0" max="5" step="0.5" placeholder="0.0" aria-describedby="ga-error">
+                            <p class="error-message" id="ga-error" aria-live="polite"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="speaking-total-section" class="hidden">
+                     <div class="input-grid" style="grid-template-columns: 1fr;">
+                        <div class="input-group">
+                            <label for="speaking-total-score">Total Bruto (0-75)</label>
+                            <input type="number" id="speaking-total-score" min="0" max="75" step="0.5" placeholder="0.0" aria-describedby="speaking-total-error">
+                            <p class="error-message" id="speaking-total-error" aria-live="polite"></p>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <div class="results-container">
+                <h2>Resultados</h2>
+                <div class="result-item">
+                    <span>Fórmula:</span>
+                    <strong id="speaking-formula" style="font-size: 0.9rem; color: var(--text-secondary); text-align: right;">(0+0+0+0+0)x2 + 0x5</strong>
+                </div>
+                <div class="result-item">
+                    <span>Pontuação Bruta:</span>
+                    <strong id="raw-score-value-speaking">0.0 / 75</strong>
+                </div>
+                <div class="result-item">
+                    <span>Pontuação na Escala:</span>
+                    <strong id="scaled-score-value-speaking">80</strong>
+                </div>
+                <div class="result-item">
+                    <span>Nível CEFR:</span>
+                    <strong id="cefr-level-value-speaking" class="cefr-badge cefr-below-b2">Abaixo de B2</strong>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card do Overall Score -->
+        <div class="calculator-card">
+            <h1>Overall Score</h1>
+            <p class="subtitle">Resultado final do exame.</p>
+
+            <div class="overall-button-container">
+                <button id="calculate-overall-btn" class="calculate-btn">Calcular Pontuação Final</button>
+                <p id="overall-error-message" class="error-message" aria-live="assertive"></p>
+            </div>
+            
+            <div id="overall-results-container" class="results-container hidden">
+                <h2>Resultado Final</h2>
+                <div class="result-item">
+                    <span>Pontuação Final (Média):</span>
+                    <strong id="overall-score-value">0</strong>
+                </div>
+                <div class="result-item">
+                    <span>Grade Cambridge:</span>
+                    <strong id="overall-grade-value">-</strong>
+                </div>
+                <div class="result-item">
+                    <span>Nível CEFR Final:</span>
+                    <strong id="overall-cefr-value" class="cefr-badge">-</strong>
+                </div>
+            </div>
+        </div>
+
+    </main>
+    <script type="module" src="index.tsx"></script>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>
